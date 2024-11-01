@@ -8,7 +8,7 @@ const options = {
   }
 };
 
- export const fetchData = async ()=>{
+ export const fetchTrending = async ()=>{
     const response = await axios(url,options)
     return response.data
   }

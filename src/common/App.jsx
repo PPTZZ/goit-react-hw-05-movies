@@ -1,11 +1,10 @@
-import { Routes, Route, NavLink, Outlet } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Home from '../pages/Home';
 import Header from './Header';
 import Movies from '../pages/Movies';
 import Footer from './Footer';
 import { Stack, Typography } from '@mui/material';
-import { fetchData } from '../services/fetchAPI';
 
 const StyledLink = styled(NavLink)`
 	color: black;
@@ -28,11 +27,15 @@ const App = () => {
 					</StyledLink>
 				</Stack>
 			</Header>
-			<Footer />
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/movies' element={<Movies />} />
+				<Route path='/movies/:movieId'>
+					<Route path='credits'/>
+					<Route path='review'/>
+				</Route>
 			</Routes>
+			<Footer />
 		</>
 	);
 };
