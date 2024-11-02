@@ -5,12 +5,13 @@ import Header from './Header';
 import Movies from '../pages/Movies';
 import Footer from './Footer';
 import { Stack, Typography } from '@mui/material';
+import MovieDetails from '../pages/MovieDetails';
 
 const StyledLink = styled(NavLink)`
-	color: black;
+	color: #d9d9d9;
 	text-decoration: none;
 	&.active {
-		color: orange;
+		color: #45C0C4;
 	}
 `;
 
@@ -30,7 +31,7 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/movies' element={<Movies />} />
-				<Route path='/movies/:movieId'>
+				<Route path='/movies/:movieId' element={<MovieDetails/>}>
 					<Route path='credits'/>
 					<Route path='review'/>
 				</Route>
