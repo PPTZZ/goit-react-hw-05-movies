@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import MovieCard from '../common/MovieCard';
 import { fetchTrending } from '../services/fetchAPI';
-import { Box, Container, Link, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [movieList, setMovieList] = useState([]);

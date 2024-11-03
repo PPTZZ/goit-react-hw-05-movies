@@ -3,6 +3,7 @@ import axios from 'axios';
 const URL_TRENDING =
   'https://api.themoviedb.org/3/trending/all/week?language=en-US';
 const URL_SEARCH = 'https://api.themoviedb.org/3/search/movie';
+const URL_MOVIE_DETAILS = 'https://api.themoviedb.org/3/movie';
 const OPTIONS = {
   headers: {
     accept: 'application/json',
@@ -25,4 +26,45 @@ const fetchSearch = async (query, page) => {
   return response.data.results;
 };
 
-export { fetchTrending, fetchSearch };
+const fetchMovieDetails = async movieId => {
+  try {
+    const response = await axios(`${URL_MOVIE_DETAILS}/${movieId}`, OPTIONS);
+    return response;
+  } catch (error) {
+    console.error(error);
+    
+  }
+};
+
+const fetchMovieCredits = async movieId => {
+  try {
+    const response = await axios(
+      `${URL_MOVIE_DETAILS}/${movieId}/credits`,
+      OPTIONS
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+    
+  }
+};
+const fetchMovieReviews = async movieId => {
+  try {
+    const response = await axios(
+      `${URL_MOVIE_DETAILS}/${movieId}/reviews`,
+      OPTIONS
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+    
+  }
+};
+
+export {
+  fetchTrending,
+  fetchSearch,
+  fetchMovieDetails,
+  fetchMovieCredits,
+  fetchMovieReviews,
+};
