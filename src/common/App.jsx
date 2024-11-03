@@ -1,15 +1,18 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Home from '../pages/Home';
 import Header from './Header';
-import Movies from '../pages/Movies';
 import Footer from './Footer';
 import { Stack, Typography } from '@mui/material';
-import MovieDetails from '../pages/MovieDetails';
-import NotFound from '../pages/NotFound';
-import Credits from './Credits';
-import Reviews from './Reviews';
+import Loader from './Loader';
 
+
+const NotFound = lazy(() => import('../pages/NotFound'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const Credits = lazy(() => import('./Credits'));
+const Reviews = lazy(() => import('./Reviews'));
 
 const StyledLink = styled(NavLink)`
   color: #d9d9d9;
@@ -32,15 +35,17 @@ const App = () => {
           </StyledLink>
         </Stack>
       </Header>
-      <Routes>
-        <Route path='/goit-react-hw-05-movies' element={<Home />} />
-        <Route path='/movies' element={<Movies />} />
+      <Suspense fallback={<Loader/>}>
+        <Routes>
+          <Route path='/goit-react-hw-05-movies' element={<Home />} />
+          <Route path='/movies' element={<Movies />} />
           <Route path='/movies/:movieId' element={<MovieDetails />}>
-            <Route path='credits' element={<Credits/>}/>
-            <Route path='reviews' element={<Reviews/>}/>
+            <Route path='credits' element={<Credits />} />
+            <Route path='reviews' element={<Reviews />} />
           </Route>
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </>
   );
