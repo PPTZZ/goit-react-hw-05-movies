@@ -1,0 +1,1 @@
+import{j as e,B as o,T as t}from"./index-CHIl736j.js";const n=()=>e.jsxs(o,{sx:{display:"flex",flexFlow:"column",justifyContent:"center",alignItems:"center",height:"86.7vh"},children:[e.jsx(t,{variant:"h1",children:"Are you lost?"}),e.jsx(t,{variant:"h3",children:"The page you are looking for doesn't exist."})]});export{n as default};
